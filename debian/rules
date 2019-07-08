@@ -2,9 +2,12 @@
 DH_VERBOSE = 1
 
 #LC_ALL=C.UTF-8 Makes sure that it builds correctly with pbuilder
+export PYBUILD_VERSIONS=2.7 3.5
+export PYBUILD_DESTDIR_python2=debian/python-ifaddr/
+export PYBUILD_DESTDIR_python3=debian/python3-ifaddr/
 
 %:
-	LC_ALL=C.UTF-8 dh $@ --with python2 --buildsystem=pybuild
+	LC_ALL=C.UTF-8 dh $@ --with python2,python3 --buildsystem=pybuild
 
 override_dh_auto_clean:
 	dh_auto_clean
